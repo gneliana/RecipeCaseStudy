@@ -2,9 +2,11 @@ package com.eliana.betancur.form;
 
 
 
-import java.util.Arrays;
-
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotEmpty;
+
+import com.eliana.betancur.enitity.Difficulty;
 
 public class CreateRecipeForm {
 	
@@ -24,14 +26,16 @@ public class CreateRecipeForm {
 	private String directions;
 	
 	//Not added
-	private Byte[] Image;
+	private String Image;
 	
 	//Category
 	@NotEmpty(message = "Field cannot be empty")
 	private String description;
 	
 	//Not added
-	private String difficulty;
+	//private String difficulty;
+	@Enumerated(EnumType.STRING)
+    private Difficulty difficulty;
 	
 	@NotEmpty(message = "Field cannot be empty")
 	private String measureDescription;
@@ -83,11 +87,11 @@ public class CreateRecipeForm {
 		this.directions = directions;
 	}
 
-	public Byte[] getImage() {
+	public String getImage() {
 		return Image;
 	}
 
-	public void setImage(Byte[] image) {
+	public void setImage(String image) {
 		Image = image;
 	}
 
@@ -99,11 +103,11 @@ public class CreateRecipeForm {
 		this.description = description;
 	}
 
-	public String getDifficulty() {
+	public Difficulty getDifficulty() {
 		return difficulty;
 	}
 
-	public void setDifficulty(String difficulty) {
+	public void setDifficulty(Difficulty difficulty) {
 		this.difficulty = difficulty;
 	}
 
@@ -130,18 +134,6 @@ public class CreateRecipeForm {
 	public void setAmount(String amount) {
 		this.amount = amount;
 	}
-
-	@Override
-	public String toString() {
-		return "CreateRecipeForm [recipeDescription=" + recipeDescription + ", prepTime=" + prepTime + ", cookTime="
-				+ cookTime + ", servings=" + servings + ", directions=" + directions + ", Image="
-				+ Arrays.toString(Image) + ", description=" + description + ", difficulty=" + difficulty
-				+ ", measureDescription=" + measureDescription + ", ingredientDescription=" + ingredientDescription
-				+ ", amount=" + amount + "]";
-	}
-
-
-	
 	
 	
 }

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,7 +30,8 @@ public class User {
 	@Column(name = "full_name", nullable = false)
 	private String fullName;
 	
-	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private Set<Recipe> recipes;
 
 	public Integer getId() {

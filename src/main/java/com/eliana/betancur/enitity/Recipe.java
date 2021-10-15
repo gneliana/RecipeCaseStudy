@@ -1,6 +1,5 @@
 package com.eliana.betancur.enitity;
 
-import java.util.Arrays;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -47,9 +45,9 @@ public class Recipe {
 	@Column(name = "directions")
 	private String directions;
 	
-	@Lob
+	
 	@Column(name = "image")
-	private Byte[] Image;
+	private String Image;
 	
     @ManyToMany
     @JoinTable(name = "recipe_category",
@@ -63,8 +61,8 @@ public class Recipe {
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredient;
     
-    @ManyToOne(cascade = CascadeType.ALL)
-    private User user;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    private User user;
 
 	public Integer getId() {
 		return id;
@@ -114,11 +112,11 @@ public class Recipe {
 		this.directions = directions;
 	}
 
-	public Byte[] getImage() {
+	public String getImage() {
 		return Image;
 	}
 
-	public void setImage(Byte[] image) {
+	public void setImage(String image) {
 		Image = image;
 	}
 
@@ -146,21 +144,6 @@ public class Recipe {
 		this.ingredient = ingredient;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	@Override
-	public String toString() {
-		return "Recipe [id=" + id + ", recipeDescription=" + recipeDescription + ", prepTime=" + prepTime
-				+ ", cookTime=" + cookTime + ", servings=" + servings + ", directions=" + directions + ", Image="
-				+ Arrays.toString(Image) + ", categories=" + categories + ", difficulty=" + difficulty + ", ingredient="
-				+ ingredient + ", user=" + user + "]";
-	}
     
 	
     

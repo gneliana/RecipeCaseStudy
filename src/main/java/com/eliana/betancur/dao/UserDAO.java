@@ -2,6 +2,7 @@ package com.eliana.betancur.dao;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,9 +14,9 @@ import com.eliana.betancur.enitity.User;
 
 
 @Repository
-public interface UserDAO extends JpaRepository<User, Long> {
+public interface UserDAO extends JpaRepository<User, Integer> {
 
-	public User findById(@Param("id") Integer id);
+	public Optional<User> findById(@Param("id") Integer id);
 
 	public User findByEmail(@Param("email") String email);
 

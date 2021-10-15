@@ -44,7 +44,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
-	public ModelAndView createUserSubmit(@Valid CreateUserForm form, BindingResult bindingResult) throws Exception {
+	public String createUserSubmit(@Valid CreateUserForm form, BindingResult bindingResult) throws Exception {
 		ModelAndView result = new ModelAndView("login/createUser");
 
 		// form validation
@@ -64,7 +64,7 @@ public class LoginController {
 			result.addObject("errorFields", bindingResult.getFieldErrors());
 			result.addObject("errors", errors);
 			
-			return result;
+			return "home";
 		} 
 
 		// business logic
@@ -78,7 +78,7 @@ public class LoginController {
 
 		// goto the next page
 
-		return result;
+		return "home";
 	}
 
 	@RequestMapping(value = "/logout")

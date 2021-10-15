@@ -3,9 +3,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%-- <jsp:include page="include/header.jsp" />
  --%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
-<form method="post" action="/createRecipe">
+<form method="post" action="/createRecipe" enctype="multipart/form-data">
 
 	<h1>Create Recipe Page</h1>
 
@@ -15,6 +16,8 @@
 	</c:forEach>
 	
 	<br>
+	
+	
 	
 	<br>
 	 Recipe Title <input type="text"
@@ -26,6 +29,16 @@
 
 		</c:if>
 	</c:forEach>
+	<br />
+	
+		<br>
+	 Select Difficulty 
+	 <form:select path="difficulty" id="difficulty">
+     <c:forEach var="difficultyValue" items="${difficulty}">
+         <form:option value="${form.difficulty}">${difficultyValue}</form:option>
+     </c:forEach>
+	</form:select>
+
 	<br />
 	
 	<br>
@@ -125,7 +138,13 @@
 	</c:forEach>
 	<br /> 
 	
-	<br> <input type="submit" name="submit" value="Submit" />
+
+<br>
+Select file to upload <input type="file" name="file" />
+		
+<br>
+	
+	<br> <input type="submit" name="Submit" value="Submit" />
 
 
 </form>
