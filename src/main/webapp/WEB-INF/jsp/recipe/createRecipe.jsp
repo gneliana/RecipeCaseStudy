@@ -32,12 +32,14 @@
 	<br />
 	
 		<br>
-	 Select Difficulty 
-	 <form:select path="difficulty" id="difficulty">
-     <c:forEach var="difficultyValue" items="${difficulty}">
-         <form:option value="${form.difficulty}">${difficultyValue}</form:option>
-     </c:forEach>
-	</form:select>
+    Choose Difficulty <select id="editState"class="form-control">
+                        <c:forEach items="${Difficulty}" var="name" varStatus="loop">
+                            <option value="${EASY}">${easy}</option>
+                            <option value="${ADVANCED}">${advanced}</option>
+                        </c:forEach>                        
+                    </select>
+	
+	
 
 	<br />
 	
