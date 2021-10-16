@@ -2,6 +2,7 @@ package com.eliana.betancur.enitity;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ public class Category {
 	@Column(name = "description", nullable = false)
 	private String description;
 	
-	@ManyToMany(mappedBy = "categories")
+	@ManyToMany(cascade=CascadeType.ALL, mappedBy = "categories")
 	private Set<Recipe> recipes;
 
 	public Integer getId() {

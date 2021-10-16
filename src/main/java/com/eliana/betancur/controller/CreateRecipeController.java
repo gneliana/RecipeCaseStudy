@@ -2,7 +2,9 @@ package com.eliana.betancur.controller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -24,6 +26,7 @@ import com.eliana.betancur.dao.MeasurementsDAO;
 import com.eliana.betancur.dao.RecipeDAO;
 import com.eliana.betancur.dao.UserDAO;
 import com.eliana.betancur.enitity.Category;
+import com.eliana.betancur.enitity.Difficulty;
 import com.eliana.betancur.enitity.Ingredient;
 import com.eliana.betancur.enitity.Measurements;
 import com.eliana.betancur.enitity.Recipe;
@@ -53,11 +56,12 @@ public class CreateRecipeController {
 	
 	
 	@RequestMapping(value = "/createRecipe", method = RequestMethod.GET)
-	public ModelAndView createRecipePage() {
-		ModelAndView result = new ModelAndView("recipe/createRecipe");
-		result.addObject("form", new CreateRecipeForm());
-		return result;
-	}
+    public ModelAndView createRecipePage() {
+        ModelAndView result = new ModelAndView("recipe/createRecipe");
+        result.addObject("form", new CreateRecipeForm());
+        result.addObject("difficulty", Difficulty.values());
+        return result;
+    }
 
 	@RequestMapping(value = "/createRecipe", method = RequestMethod.POST)
 	public ModelAndView createRecipeSumit(@RequestParam("file") MultipartFile file, @Valid CreateRecipeForm form, BindingResult bindingResult) throws Exception {
@@ -120,10 +124,19 @@ public class CreateRecipeController {
 		
 		ingredient.setIngredientDescription(form.getIngredientDescription());
 		ingredient.setAmount(form.getAmount());
+		ingredient.setRecipe(recipe);
+		//ingredient.setUom(uom);
 		
 		measurements.setMeasureDescription(form.getMeasureDescription());
 		
 		category.setDescription(form.getDescription());
+		Set<Category> categories = new HashSet<Category>();
+		categories.add(category);
+		recipe.setCategories(categories);
+		
+		Set<Ingredient> ingredients = new HashSet<Ingredient>();
+		ingredients.add(ingredient);
+		recipe.setIngredient(ingredients);
 		
 		recipeDao.save(recipe);
 		ingredientDao.save(ingredient);

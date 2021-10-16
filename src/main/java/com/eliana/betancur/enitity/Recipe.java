@@ -49,7 +49,7 @@ public class Recipe {
 	@Column(name = "image")
 	private String Image;
 	
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name = "recipe_category",
     joinColumns = @JoinColumn(name = "recipe_id"),
     inverseJoinColumns = @JoinColumn(name = "category_id"))

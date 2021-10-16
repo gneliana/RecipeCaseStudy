@@ -24,8 +24,7 @@ public class CreateRecipeForm {
 	
 	@NotEmpty(message = "Field cannot be empty")
 	private String directions;
-	
-	//Not added
+
 	private String Image;
 	
 	//Category
