@@ -12,6 +12,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+//import javax.persistence.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "users")
 public class User {
@@ -34,6 +45,12 @@ public class User {
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private Set<Recipe> recipes;
 
+	public User(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -78,7 +95,5 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", fullName=" + fullName + "]";
 	}
-	
-	
 
 }

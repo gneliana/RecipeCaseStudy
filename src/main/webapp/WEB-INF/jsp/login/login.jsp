@@ -10,10 +10,11 @@
 </head>
 <body>
 
-<%-- 	<form method="post" action="/login/j_security_check">
+<!--  	<form method="post" action="/login/j_security_check"> -->
+	<form method="post" action="/home">
 		<c:if test="${error}">
 			<div style="color:red">Invalid email or password.</div>
-		</c:if> --%>
+		</c:if> 
 
 
 		Username : <input type="text" name="username" value=""> <br>

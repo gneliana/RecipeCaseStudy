@@ -78,7 +78,7 @@ public class LoginController {
 
 		// goto the next page
 
-		return "home";
+		return "login";
 	}
 
 	@RequestMapping(value = "/logout")
@@ -94,7 +94,5 @@ public class LoginController {
 		ModelAndView result = new ModelAndView("login/login");
 		return result;
 	}
-
-	
 
 }
