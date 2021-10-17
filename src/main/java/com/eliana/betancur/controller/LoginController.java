@@ -44,8 +44,8 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
-	public String createUserSubmit(@Valid CreateUserForm form, BindingResult bindingResult) throws Exception {
-		ModelAndView result = new ModelAndView("login/createUser");
+	public ModelAndView createUserSubmit(@Valid CreateUserForm form, BindingResult bindingResult) throws Exception {
+		ModelAndView result = new ModelAndView("login/login");
 
 		// form validation
 		result.addObject("form", form);
@@ -64,7 +64,7 @@ public class LoginController {
 			result.addObject("errorFields", bindingResult.getFieldErrors());
 			result.addObject("errors", errors);
 			
-			return "home";
+			return result;
 		} 
 
 		// business logic
@@ -78,7 +78,7 @@ public class LoginController {
 
 		// goto the next page
 
-		return "login";
+		return result;
 	}
 
 	@RequestMapping(value = "/logout")
@@ -89,10 +89,16 @@ public class LoginController {
 	}
 
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login")
 	public ModelAndView login() {
 		ModelAndView result = new ModelAndView("login/login");
 		return result;
 	}
-
+	
+	@RequestMapping(value = "/login/login")
+	public ModelAndView login2() {
+		ModelAndView result = new ModelAndView("login/login");
+		return result;
+	}
+ //Eliana!1234
 }

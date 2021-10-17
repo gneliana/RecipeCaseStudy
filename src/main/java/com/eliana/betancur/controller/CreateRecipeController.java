@@ -10,6 +10,8 @@ import javax.validation.Valid;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -142,7 +144,7 @@ public class CreateRecipeController {
 		ingredientDao.save(ingredient);
 		measurementsDao.save(measurements);
 		categoryDao.save(category);
-		user = userDao.getById(1);
+		user = userDao.findByEmail(getUserEmail());
 		user.getRecipes().add(recipe);
 		userDao.save(user);
 
@@ -151,6 +153,16 @@ public class CreateRecipeController {
 		return result;
 	}
 
-	
+	public String getUserEmail() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			String username = ((UserDetails)principal).getUsername();
+			return username;
+		} else {
+			String username = principal.toString();
+			return "";
+		}
+	}
 
 }

@@ -11,15 +11,16 @@
 <body>
 
 <!--  	<form method="post" action="/login/j_security_check"> -->
-	<form method="post" action="/home">
+	<form method="post" action="/login/login">
 		<c:if test="${error}">
 			<div style="color:red">Invalid email or password.</div>
 		</c:if> 
 
 
 		Username : <input type="text" name="username" value=""> <br>
-		Password : <input type="text" name="password"> <br> <input
+		Password : <input type="password" name="password"> <br> <input
 			type="submit" name="submit" value="Submit" />
+		<c:if test="${(not empty param.error) && (not empty SPRING_SECURITY_LAST_EXCEPTION)}"> </c:if> 
 	</form>
 
 
