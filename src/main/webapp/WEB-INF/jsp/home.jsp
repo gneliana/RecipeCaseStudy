@@ -35,7 +35,7 @@
         </div>
         <div class="nav-links">
           <a href="/home" class="nav-link"> home </a>
-          <a href="/home" class="nav-link"> search </a>
+          <a href="/search" class="nav-link"> search </a>
           <a href="/home" class="nav-link"> about </a>
 
           <div class="nav-link">

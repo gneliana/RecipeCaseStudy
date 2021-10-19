@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,14 +79,6 @@ public class LoginController {
 
 		return result;
 	}
-
-	@RequestMapping(value = "/logout")
-	public ModelAndView logout(HttpSession session) {
-		session.invalidate();
-		ModelAndView result = new ModelAndView("redirect:/login");
-		return result;
-	}
-
 
 	@RequestMapping(value = "/login")
 	public ModelAndView login() {

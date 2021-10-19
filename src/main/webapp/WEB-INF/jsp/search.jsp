@@ -4,9 +4,10 @@
 
 <body>
 
-	<form>
-		Search <input type="text" name="search" value="${search }"> <input
-			type="submit" value="Submit" />
+	<form action="search" method = "POST">
+	
+		Search <input type="text" name="search"> <input
+			type="submit" value="Submit"/>
 	</form>
 	
 	<c:if test="${not empty search}">
@@ -18,22 +19,23 @@
 			<c:otherwise>
 				<table border="1" cellpadding="3">
 					<tr>
-						<td><b>Id</b></td>
-						<td><b>Email</b></td>
-						<td><b>Password</b></td>
-						<td><b>Full Name</b></td>
-						<td><b>Phone</b></td>
-						<td><b>Detail</b></td>
+						
+						<td><b>Recipe Name</b></td>
+						<td><b>Servings</b></td>
+						<td><b>Cook time</b></td>
+						<td><b>Prep Time</b></td>
+						<td><b>Image</b></td>
 					</tr>
-	
+
 					<c:forEach items="${recipe}" var="recipe">
 						<tr>
-							<td>${user.id }</td>
-							<td>${user.email }</td>
-							<td>${user.password }</td>
-							<td>${user.fullName }</td>
-							<td>${user.phone }</td>
-							<td><a href="/detail?id=${user.id }">Detail</a></td>
+							<td>${recipe.recipeDescription }</td>
+							<td>${recipe.servings }</td>
+							<td>${recipe.cookTime }</td>
+							<td>${recipe.prepTime }</td>
+							<td>${recipe.directions }</td>
+							<td><img style="height:300px" src="${Image}"></td>
+						<%-- 	<td><a href="/detail?id=${user.id }">Detail</a></td> --%>
 						</tr>
 					</c:forEach>
 				</table>

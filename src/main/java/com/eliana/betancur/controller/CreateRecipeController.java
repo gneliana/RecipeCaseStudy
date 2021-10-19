@@ -67,7 +67,7 @@ public class CreateRecipeController {
 
 	@RequestMapping(value = "/createRecipe", method = RequestMethod.POST)
 	public ModelAndView createRecipeSumit(@RequestParam("file") MultipartFile file, @Valid CreateRecipeForm form, BindingResult bindingResult) throws Exception {
-		ModelAndView result = new ModelAndView("recipe/createRecipe");
+		ModelAndView result = new ModelAndView("login/userPortal");
 
 	
 		// form validation
