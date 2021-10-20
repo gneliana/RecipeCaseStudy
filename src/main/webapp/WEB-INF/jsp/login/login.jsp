@@ -66,8 +66,8 @@
 			<label for="exampleInputPassword1" class="form-label">Password</label>
 			<input type="text" name="password" class="form-control">
 		</div>
-		<button type="submit" value="submit" class="btn btn-primary">Submit</button>
-		<c:if
+			<button type="submit" value="submit" class="btn btn-primary">Submit</button>
+			<c:if
 			test="${(not empty param.error) && (not empty SPRING_SECURITY_LAST_EXCEPTION)}">
 		</c:if>
 	</form>

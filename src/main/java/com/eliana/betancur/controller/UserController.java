@@ -34,7 +34,7 @@ public class UserController {
 		response.setViewName("login/userPortal");
 
 		User user = userDao.findByEmail(getUserEmail());
-		System.out.println("===============HEREEE=========================" + user.getRecipes().size());
+		System.out.println( + user.getRecipes().size());
 		Set<Recipe> recipes = user.getRecipes();
 
 		response.addObject("recipe", recipes);

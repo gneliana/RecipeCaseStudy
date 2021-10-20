@@ -43,103 +43,169 @@
 		</div>
 	</nav>
 	<!-- navbar -->
+	<form method="post" action="/createRecipe"
+		enctype="multipart/form-data">
+		<!-- Create Recipe Form -->
+		<h1>Create Recipe</h1>
+		<c:forEach var="error" items="${errors}">
+			<span style='color: red'>${error}</span>
+			<br>
+		</c:forEach>
 
-	<!-- Create Recipe Form -->
-	<h1>Create Recipe</h1>
-    <c:forEach var="error" items="${errors}">
-        <span style='color: red'>${error}</span>
-        <br>
-    </c:forEach>
+		<div class="container">
+			<div class="mb-3">
+				<label for="exampleFormControlInput1" class="form-label">Recipe
+					Name</label> <input type="text" class="form-control"
+					id="exampleFormControlInput1" name="recipeDescription"
+					value="${form.recipeDescription }" />
+				<c:forEach items="${errorFields}" var="errorField">
+					<c:if test='${errorField.getField().equals("recipeDescription") }'>
+						<br>
+						<span style='color: red'>${errorField.defaultMessage}</span>
 
-<div class="container">
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Recipe Name</label>
-  <input type="text" class="form-control" id="exampleFormControlInput1" name="recipeDescription" value="${form.recipeDescription }" />
-      <c:forEach items="${errorFields}" var="errorField">
-        <c:if test='${errorField.getField().equals("recipeDescription") }'>
-            <br>
-            <span style='color: red'>${errorField.defaultMessage}</span>
+					</c:if>
+				</c:forEach>
+			</div>
 
-        </c:if> 
-    </c:forEach>
-</div>
-
-<div class="mb-3">
-<label for="formGroupExampleInput1" class="form-label"> Choose Difficulty </label>
-<select class="form-select" aria-label="Default select example" name="difficulty" id="difficulty">
-    <c:forEach items="${difficulty}" var="value">
-       <option>${value}</option>
-    </c:forEach>
-</select>
-</div>
+			<div class="mb-3">
+				<label for="formGroupExampleInput1" class="form-label">
+					Choose Difficulty </label> <select class="form-select"
+					aria-label="Default select example" name="difficulty"
+					id="difficulty">
+					<c:forEach items="${difficulty}" var="value">
+						<option>${value}</option>
+					</c:forEach>
+				</select>
+			</div>
 
 
-<div class="mb-3">
-  <label for="formGroupExampleInput1" class="form-label"> Preparation Time </label>
-  <input type="text" class="form-control" id="fexampleFormControlInput1" name="prepTime"
-        value="${form.prepTime }" />
-  <c:forEach items="${errorFields}" var="errorField">
-        <c:if test='${errorField.getField().equals("prepTime") }'>
-            <br>
-            <span style='color: red'>${errorField.defaultMessage}</span>
+			<div class="mb-3">
+				<label for="formGroupExampleInput1" class="form-label">
+					Preparation Time </label> <input type="text" class="form-control"
+					id="fexampleFormControlInput1" name="prepTime"
+					value="${form.prepTime }" />
+				<c:forEach items="${errorFields}" var="errorField">
+					<c:if test='${errorField.getField().equals("prepTime") }'>
+						<br>
+						<span style='color: red'>${errorField.defaultMessage}</span>
 
-        </c:if>
-    </c:forEach>
-</div>
+					</c:if>
+				</c:forEach>
+			</div>
 
-<div class="mb-3">
-  <label for="formGroupExampleInput1" class="form-label"> Cooking Time </label>
-  <input type="text" class="form-control" id="fexampleFormControlInput1" name="cookTime"
-        value="${form.cookTime }" />
-  <c:forEach items="${errorFields}" var="errorField">
-        <c:if test='${errorField.getField().equals("cookTime") }'>
-            <br>
-            <span style='color: red'>${errorField.defaultMessage}</span>
+			<div class="mb-3">
+				<label for="formGroupExampleInput1" class="form-label">
+					Cooking Time </label> <input type="text" class="form-control"
+					id="fexampleFormControlInput1" name="cookTime"
+					value="${form.cookTime }" />
+				<c:forEach items="${errorFields}" var="errorField">
+					<c:if test='${errorField.getField().equals("cookTime") }'>
+						<br>
+						<span style='color: red'>${errorField.defaultMessage}</span>
 
-        </c:if>
-    </c:forEach>
-</div>
+					</c:if>
+				</c:forEach>
+			</div>
 
-<div class="mb-3">
-  <label for="formGroupExampleInput1" class="form-label"> Servings </label>
-  <input type="text" class="form-control" id="fexampleFormControlInput1"  name="servings"
-        value="${form.servings }" />
-  <c:forEach items="${errorFields}" var="errorField">
-        <c:if test='${errorField.getField().equals("servings") }'>
-            <br>
-            <span style='color: red'>${errorField.defaultMessage}</span>
+			<div class="mb-3">
+				<label for="formGroupExampleInput1" class="form-label">
+					Servings </label> <input type="text" class="form-control"
+					id="fexampleFormControlInput1" name="servings"
+					value="${form.servings }" />
+				<c:forEach items="${errorFields}" var="errorField">
+					<c:if test='${errorField.getField().equals("servings") }'>
+						<br>
+						<span style='color: red'>${errorField.defaultMessage}</span>
 
-        </c:if>
-    </c:forEach>
-</div>
+					</c:if>
+				</c:forEach>
+			</div>
 
-<div class="mb-3">
-  <label for="formGroupExampleInput1" class="form-label"> Category </label>
-  <input type="text" class="form-control" id="fexampleFormControlInput1"  name="description"
-        value="${form.description }" />
-  <c:forEach items="${errorFields}" var="errorField">
-        <c:if test='${errorField.getField().equals("description") }'>
-            <br>
-            <span style='color: red'>${errorField.defaultMessage}</span>
+			<div class="mb-3">
+				<label for="formGroupExampleInput1" class="form-label">
+					Category </label> <input type="text" class="form-control"
+					id="fexampleFormControlInput1" name="description"
+					value="${form.description }" />
+				<c:forEach items="${errorFields}" var="errorField">
+					<c:if test='${errorField.getField().equals("description") }'>
+						<br>
+						<span style='color: red'>${errorField.defaultMessage}</span>
 
-        </c:if>
-    </c:forEach>
-</div>
+					</c:if>
+				</c:forEach>
+			</div>
 
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Cooking Directions</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="directions" ><c:out value="${form.directions }"></c:out> </textarea>
-    <c:forEach items="${errorFields}" var="errorField">
-        <c:if test='${errorField.getField().equals("directions") }'>
-            <br>
-            <span style='color: red'>${errorField.defaultMessage}</span>
+			<div class="mb-3">
+				<label for="formGroupExampleInput1" class="form-label">
+					Ingredients </label> <input type="text" class="form-control"
+					id="fexampleFormControlInput1" name="ingredientDescription"
+					value="${form.ingredientDescription }" />
+				<c:forEach items="${errorFields}" var="errorField">
+					<c:if
+						test='${errorField.getField().equals("ingredientDescription") }'>
+						<br>
+						<span style='color: red'>${errorField.defaultMessage}</span>
 
-        </c:if>
-    </c:forEach>        
-</div>
+					</c:if>
+				</c:forEach>
+			</div>
 
-</div> 
+			<div class="mb-3">
+				<label for="formGroupExampleInput1" class="form-label">
+					Ingredient Amount </label> <input type="text" class="form-control"
+					id="fexampleFormControlInput1" name="amount"
+					value="${form.amount }" />
+				<c:forEach items="${errorFields}" var="errorField">
+					<c:if test='${errorField.getField().equals("amount") }'>
+						<br>
+						<span style='color: red'>${errorField.defaultMessage}</span>
 
+					</c:if>
+				</c:forEach>
+			</div>
+
+			<div class="mb-3">
+				<label for="formGroupExampleInput1" class="form-label">
+					Ingredient unit of Measurement </label> <input type="text"
+					class="form-control" id="fexampleFormControlInput1"
+					name="measureDescription" value="${form.measureDescription }" />
+				<c:forEach items="${errorFields}" var="errorField">
+					<c:if test='${errorField.getField().equals("measureDescription") }'>
+						<br>
+						<span style='color: red'>${errorField.defaultMessage}</span>
+
+					</c:if>
+				</c:forEach>
+			</div>
+
+			<div class="mb-3">
+				<label for="exampleFormControlTextarea1" class="form-label">Cooking
+					Directions</label>
+				<textarea class="form-control" id="exampleFormControlTextarea1"
+					rows="3" name="directions"><c:out
+						value="${form.directions }"></c:out> </textarea>
+				<c:forEach items="${errorFields}" var="errorField">
+					<c:if test='${errorField.getField().equals("directions") }'>
+						<br>
+						<span style='color: red'>${errorField.defaultMessage}</span>
+
+					</c:if>
+				</c:forEach>
+			</div>
+
+			<div class="mb-3">
+				<label for="formFile" class="form-label">Upload Recipe Image</label>
+				<input class="form-control" type="file" id="file" name="file">
+			</div>
+
+			<div>
+				<button type="submit" value="submit" class="btn btn-primary">Submit</button>
+			</div>
+
+		</div>
+
+		<br> <br>
+	</form>
 	<!-- Recipe form end -->
 
 
