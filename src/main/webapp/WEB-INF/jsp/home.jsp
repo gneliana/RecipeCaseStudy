@@ -8,6 +8,9 @@
 <head>
 <meta charset="ISO-8859-1">
 
+<!-- <link rel="stylesheet" href="style.css">
+ -->
+<!-- <link href="/ccs/style.css" rel="stylesheet" type="text/css"> -->
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -20,15 +23,30 @@
 	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
 	crossorigin="anonymous"></script> 
 	
-	
+<style type="text/css">
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  text-align: center;
+  background: white;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+.navbar {
+  background-color: #E27C6E;
+}
+</style>
 </head>
 
 
 <body>
 
 <div class="header">
-  <h1>My Website</h1>
-  <p>Resize the browser window to see the effect.</p>
+  <h1>Recipe Share</h1>
+  <p>Share your favorite recipes with the world.</p>
 </div>
 
 

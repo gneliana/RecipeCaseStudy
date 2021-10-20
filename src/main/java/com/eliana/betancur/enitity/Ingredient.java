@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "ingredients")
 public class Ingredient {
@@ -32,6 +33,21 @@ public class Ingredient {
 	
 	@ManyToOne
 	private Recipe recipe;
+	
+
+	public Ingredient() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Ingredient(String ingredientDescription, String amount, Measurements uom, Recipe recipe) {
+		super();
+		this.ingredientDescription = ingredientDescription;
+		this.amount = amount;
+		this.uom = uom;
+		this.recipe = recipe;
+	}
+
+	
 
 	public String getIngredientDescription() {
 		return ingredientDescription;
@@ -65,7 +81,6 @@ public class Ingredient {
 		this.recipe = recipe;
 	}
 
-	
 	
 
 }

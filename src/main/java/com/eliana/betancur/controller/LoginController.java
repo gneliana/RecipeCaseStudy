@@ -2,6 +2,7 @@ package com.eliana.betancur.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
@@ -68,6 +69,18 @@ public class LoginController {
 
 		// business logic
 		User user = new User();
+		
+		//User existingUser = userDao.findById(1).get();
+		//userDao.delete(user);
+		Optional<User> optionalUser = Optional.ofNullable(userDao.findByEmail(form.getEmail()));
+		User tempUser = null;
+		if (optionalUser.isPresent()) {
+			result.addObject("errorFields", bindingResult.getFieldErrors());
+			result.addObject("errors", "EMAIL ALREADY IN USE");
+			
+			return result;
+		}
+
 		
 		user.setEmail(form.getEmail());
 		user.setPassword(form.getPassword());

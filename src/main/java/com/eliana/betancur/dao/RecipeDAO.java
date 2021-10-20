@@ -1,6 +1,7 @@
 package com.eliana.betancur.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +19,5 @@ public interface RecipeDAO extends JpaRepository<Recipe, Long> {
 	@Query(value = "select * from recipe.recipe r where lower(r.recp_description) like lower(concat('%', :recp_description,'%'))", nativeQuery = true)
 	public List<Recipe> findByDescription(@Param("recp_description")String recipe);
 
+	//public Set<Recipe> findByUserID(@Param("user_id") Integer userID);
 }

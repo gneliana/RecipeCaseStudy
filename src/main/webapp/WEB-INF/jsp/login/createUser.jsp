@@ -17,11 +17,13 @@
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
  </head>
-<!--  navbar   -->
+ 
+ 
+
 <body>
+<!--  navbar   -->
 <nav class="navbar fixed-navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Recipe Share</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -43,57 +45,56 @@
     </div>
   </div>
 </nav>
-<!-- navbar -->
+<!-- navbar end -->
 
-
+<!-- Create User Form-->
+<div class="container">
 <form method="post" action="/createUser">
-
-<h1>Create User</h1>
+<h1>Create Account</h1>
 
 <c:forEach var="error" items="${errors}" >
    <span style='color:red'>${error}</span>
    <br>
 </c:forEach>
 
-
-<br>
-
-	Email <input type="text" name="email" value="${form.email }"/>
-	<c:forEach items="${errorFields}" var="errorField">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email Address</label>
+    <input type="email" name="email"  value="${form.email }" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <c:forEach items="${errorFields}" var="errorField">
 		<c:if test='${errorField.getField().equals("email") }'> 
  		 	<br>
 	   		<span style='color:red'>${errorField.defaultMessage}</span>
 	  		
  	  	</c:if> 
 	</c:forEach>
-	
-    <br />
-    Password <input type="text" name="password" value="${form.password }" />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" name="password"  value="${form.password }" class="form-control" id="exampleInputPassword1" >
     <c:forEach items="${errorFields}" var="errorField">
  		<c:if test='${errorField.field == "password" }'>
  			<br> 
 	   		<span style='color:red'>${errorField.defaultMessage}</span>
  	  	</c:if> 
 	</c:forEach>
-    
-    <br>
-    Confirm Password <input type="text" name="confirmPassword"value="${form.confirmPassword }" />
-    <c:forEach items="${errorFields}" var="errorField">
+  </div>
+    <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+    <input type="password" name="confirmPassword"  value="${form.confirmPassword }" class="form-control" id="exampleInputPassword1" >
+        <c:forEach items="${errorFields}" var="errorField">
  		<c:if test='${errorField.field == "confirmPassword" }'>
  			<br> 
 	   		<span style='color:red'>${errorField.defaultMessage}</span>
  	  	</c:if> 
 	</c:forEach>
-    
-    
-    <br>
-    Full Name <input type="text" name="fullName" value="${form.fullName }"/>
-    <br>
-
-    <input type="submit" name="submit" value="Submit" />
-    
-     
+  </div>
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Full Name</label>
+    <input type="text" class="form-control" name="fullName" value="${form.fullName }" >
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
+</div>
 </body>
 </html>
