@@ -15,9 +15,38 @@
 	crossorigin="anonymous">
 
 <script
+	
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
 	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-	crossorigin="anonymous"></script>
+	crossorigin="anonymous">
+	</script>
+<script type="text/javascript">
+    function userValidation(form) {
+    	var email = form.email.value;
+        var password = form.password.value;
+        var confirmPassword = form.confirmPassword.value;
+        var name = form.fullName.value;
+
+        if(email == "") {
+        	form.email.focus();
+        	return false;
+            } 
+        if(password == "") {
+        	form.password.focus();
+        	return false;
+            } 
+        if(confirmPassword == "") {
+        	form.confirmPassword.focus();
+        	return false;
+            } 
+        if(name == "") {
+        	form.name.focus();
+        	return false;
+            } 
+        
+        return false;
+    }
+</script>
 </head>
 
 
@@ -50,7 +79,7 @@
 
 	<!-- Create User Form-->
 	<div class="container">
-		<form method="post" action="/createUser">
+		<form name="RegForm" onsubmit="return userValidation(this);" method="post" action="/createUser">
 			<h1>Create Account</h1>
 
 			<c:forEach var="error" items="${errors}">
@@ -100,7 +129,7 @@
 					value="${form.fullName }">
 			</div>
 
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="submit"  class="btn btn-primary">Submit</button>
 		</form>
 	</div>
 </body>

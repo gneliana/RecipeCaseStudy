@@ -70,6 +70,7 @@
 
 						<c:forEach items="${recipe}" var="recipe">
 							<tr>
+								<td><a href="<c:url value="/recipeDisplay/${recipe.id}" />" >Recipe Result</a></td>
 								<td>${recipe.recipeDescription }</td>
 								<td>${recipe.servings }</td>
 								<td>${recipe.cookTime }</td>

@@ -3,10 +3,13 @@ package com.eliana.betancur.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.LogManager;
 
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -24,6 +27,8 @@ import com.eliana.betancur.form.CreateUserForm;
 @RequestMapping("/")
 public class LoginController {
 	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	private UserDAO userDao;
 	
@@ -38,15 +43,19 @@ public class LoginController {
 	
 	@RequestMapping(value = "/createUser", method = RequestMethod.GET)
 	public ModelAndView createUserPage() {
+		logger.info("Enter: createUserSubmit()");
 		ModelAndView result = new ModelAndView("login/createUser");
 		result.addObject("form", new CreateUserForm());
+		
+		logger.info("Exit: createUserSubmit()");
 		return result;
 	}
 
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
 	public ModelAndView createUserSubmit(@Valid CreateUserForm form, BindingResult bindingResult) throws Exception {
+		logger.info("Enter: createUserSubmit()");
 		ModelAndView result = new ModelAndView("login/login");
-
+		
 		// form validation
 		result.addObject("form", form);
 
@@ -63,7 +72,7 @@ public class LoginController {
 
 			result.addObject("errorFields", bindingResult.getFieldErrors());
 			result.addObject("errors", errors);
-			
+			logger.trace("createUserSubmit() - ERROR: Binding Errors");
 			return result;
 		} 
 
@@ -78,6 +87,7 @@ public class LoginController {
 			result.addObject("errorFields", bindingResult.getFieldErrors());
 			result.addObject("errors", "EMAIL ALREADY IN USE");
 			
+			logger.trace("createUserSubmit() - ERROR: Email Already In Use");
 			return result;
 		}
 
@@ -89,19 +99,25 @@ public class LoginController {
 		userDao.save(user);
 
 		// goto the next page
-
+		logger.info("Exit: createUserSubmit()");
 		return result;
 	}
 
 	@RequestMapping(value = "/login")
 	public ModelAndView login() {
+		logger.info("Enter: login()");
 		ModelAndView result = new ModelAndView("login/login");
+		
+		logger.info("Exit: login()");
 		return result;
 	}
 	
 	@RequestMapping(value = "/login/login")
 	public ModelAndView login2() {
+		logger.info("Enter: login2()");
 		ModelAndView result = new ModelAndView("login/login");
+		
+		logger.info("Exit: login2()");
 		return result;
 	}
  //Eliana!1234

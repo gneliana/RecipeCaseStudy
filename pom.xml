@@ -159,6 +159,13 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+        
+        <!-- Logging  -->
+		<dependency>
+			<groupId>io.symphonia</groupId>
+			<artifactId>lambda-logging</artifactId>
+			<version>1.0.0</version>
+		</dependency>
         </dependencies>
 
 	<profiles>

@@ -41,6 +41,9 @@ public class SearchController {
 			recipes = recipeDao.findByDescription(search);
 		}
 
+		recipes.forEach(
+				(n)->System.out.println(n.toString())
+				);
 		response.addObject("recipe", recipes);
 		response.addObject("search", search);
 
